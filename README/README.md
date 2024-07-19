@@ -40,7 +40,7 @@
   git clone https://github.com/busatmd021/DwindlingGalaxies.git<br/><br/>
 
 - **Navigate to the Project Directory:**<br/>
-  cd [main Branch]<br/><br/>
+  cd DwindlingGalaxies<br/><br/>
  
 - **Build the Project:**
   - Ensure you have C++ and SFML installed on your system.<br/>
