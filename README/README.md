@@ -27,7 +27,7 @@
  - **User Input Handling:** SFML is also utilized for handling user inputs, ensuring responsive and accurate control over the game character.<br/>
  - **Collision Detection:** The game includes robust collision detection and response systems for gameplay interactions, making sure that all in-game collisions are accurately processed.<br/>
  - **Sound Effects and Music:** The game features sound effects and background music to enhance the immersive experience.<br/>
- - **Building Game Package:** Successfully package the final game into an application that can be installed on Windows Operating Systems.<br/><br/><br/>
+ - **Building Game Package:** Successfully packaged the final game into an application that can be installed on Windows Operating Systems.<br/><br/><br/>
  
 
 
