@@ -46,7 +46,10 @@
  
 - **Build the Project:**
   - Ensure you have C++ and SFML installed on your system.<br/>
-  - Compile the project using your preferred IDE or build system, using _Make play_ command (see Makefile for more details).<br/><br/><br/>
+  - Compile the project using your preferred IDE or build system, using _Make play_ command (see Makefile for more details).<br/><br/>
+
+- **Executable Files:**
+  - Precompiled executable files are available for Windows and Linux.<br/><br/><br/>
 
 
 **Future Enhancement**
