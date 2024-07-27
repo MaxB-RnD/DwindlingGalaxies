@@ -7,6 +7,9 @@ InstallDir "$PROGRAMFILES\DwindlingGalaxies"
 # Request Application Privileges for Windows Vista and Later
 RequestExecutionLevel highest
 
+# Set the Installer Icon
+Icon "Include\Libraries\Images\Logo.ico"
+
 # Define the Default Section for the Installation
 Section "MainSection"
 
@@ -14,7 +17,7 @@ Section "MainSection"
   SetOutPath "$INSTDIR"
 
   # Install the Game Executable
-  File "Include\game"
+  File "Include\DwindlingGalaxies.exe"
 
   # Install SFML DLLs
   SetOutPath "$INSTDIR\Libraries\SFML"
@@ -77,15 +80,9 @@ Section "MainSection"
   SetOutPath "$INSTDIR\Libraries\Documentation"
   File "Include\README\README.md"
   File "Include\LICENSE\LICENSE.md"
-  
-  # Create a batch file to run the game
-  FileOpen $0 "$INSTDIR\run_game.bat" w
-  FileWrite $0 "cd /d \"$INSTDIR\"\r\n"
-  FileWrite $0 "start cmd /k game\r\n"
-  FileClose $0
-  
-  # Create a shortcut on the Desktop to run the batch file
-  CreateShortCut "$DESKTOP\DwindlingGalaxies.lnk" "$INSTDIR\run_game.bat"
+
+  # Create a shortcut on the Desktop with the custom icon
+  CreateShortCut "$DESKTOP\DwindlingGalaxies.lnk" "$INSTDIR\DwindlingGalaxies.exe" "" "$INSTDIR\Logo.ico"
   
   # Write the uninstaller
   WriteUninstaller "$INSTDIR\Uninstaller.exe"
@@ -95,22 +92,17 @@ SectionEnd
 # Uninstaller section
 Section "Uninstall"
   # Remove installed files
-  Delete "$INSTDIR\game"
+  Delete "$INSTDIR\DwindlingGalaxies.exe"
   
-  # Remove the batch file
-  Delete "$INSTDIR\run_game.bat"
-
   # Remove SFML DLLs
   Delete "$INSTDIR\Libraries\SFML\sfml-graphics-2.dll"
   Delete "$INSTDIR\Libraries\SFML\sfml-window-2.dll"
   Delete "$INSTDIR\Libraries\SFML\sfml-system-2.dll"
   Delete "$INSTDIR\Libraries\SFML\sfml-audio-2.dll"
-  RMDir "$INSTDIR\Libraries\SFML"
   
   # Remove C++ Redistributables (they are executables, so they might not be uninstalled here)
   Delete "$INSTDIR\Libraries\Redist\VC_redist.x86.exe"
   Delete "$INSTDIR\Libraries\Redist\VC_redist.x64.exe"
-  RMDir "$INSTDIR\Libraries\Redist"
 
   # Remove Fonts Directory
   Delete "$INSTDIR\Libraries\Fonts\Future_Now.ttf"

@@ -47,7 +47,3 @@ play: main.cpp DwindlingGalaxies.cpp GameEntity.cpp Player.cpp Laser.cpp GameMen
 	@g++ main.cpp DwindlingGalaxies.cpp GameEntity.cpp Player.cpp Laser.cpp GameMenu.cpp Lives.cpp Alien.cpp PowerUp.cpp FasterFiring.cpp ExtraLive.cpp Talz.cpp Helghast.cpp MondoShawn.cpp -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system -o game
 	@./game
 	@clear
-
-execute: main.cpp DwindlingGalaxies.cpp GameEntity.cpp Player.cpp Laser.cpp GameMenu.cpp Lives.cpp Alien.cpp PowerUp.cpp FasterFiring.cpp ExtraLive.cpp Talz.cpp Helghast.cpp MondoShawn.cpp
-	@x86_64-w64-mingw32-g++ main.cpp DwindlingGalaxies.cpp GameEntity.cpp Player.cpp Laser.cpp GameMenu.cpp Lives.cpp Alien.cpp PowerUp.cpp FasterFiring.cpp ExtraLive.cpp Talz.cpp Helghast.cpp MondoShawn.cpp -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system -o game.exe
-	@clear
