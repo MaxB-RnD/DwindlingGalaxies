@@ -14,7 +14,7 @@ using namespace std;
     // Specific Constructor
     Talz::Talz(float pos_x, float pos_y) : Alien() {
         // Set Image of the Body
-            setImage("Images/Talz.png");
+            setImage("Libraries/Images/Talz.png");
         // Set Position
             body->setPosition(pos_x, pos_y);
     }

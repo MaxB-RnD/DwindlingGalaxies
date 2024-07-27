@@ -29,7 +29,7 @@ using namespace std;
 void GameMenu::titleSequence(){    
     //Load Logo Sprite
         // Ensure image has loaded properly
-            if(!studio_logo.loadFromFile("Images/Logo1.png")){
+            if(!studio_logo.loadFromFile("Libraries/Images/Logo1.png")){
                 cout <<"Logo Image Not Found"<< endl;
                 exit(0);
             }
@@ -53,7 +53,7 @@ void GameMenu::titleSequence(){
 
     //Load Main Screen Sprite
         // Ensure image has loaded properly
-            if(!main_title.loadFromFile("Images/main_title.png")){
+            if(!main_title.loadFromFile("Libraries/Images/main_title.png")){
                 cout <<"Title Image Not Found"<< endl;
                 exit(0);
             }
@@ -275,7 +275,7 @@ void GameMenu::titleSequence(){
         Sprite GameMenu::mainMenuSprite(){
             //Load background
                 // Ensure image has loaded properly
-                    if(!simple_menu.loadFromFile("Images/StartMenu.png")){
+                    if(!simple_menu.loadFromFile("Libraries/Images/StartMenu.png")){
                         cout <<"Main Menu Image Not Found"<< endl;
                         exit(0);
                     }        
@@ -303,7 +303,7 @@ void GameMenu::titleSequence(){
         Sprite GameMenu::easyMode(){
             // Load Background Image
                 // Ensure Image Loads Properly   
-                    if(!beginner_image.loadFromFile("Images/MenuBeginner.png")){
+                    if(!beginner_image.loadFromFile("Libraries/Images/MenuBeginner.png")){
                         cout <<"Beginner Button Image Not Found"<< endl;
                         exit(0);
                     }       
@@ -330,7 +330,7 @@ void GameMenu::titleSequence(){
         Sprite GameMenu::mediumMode(){
             // Load Background Image
                 // Ensure Image Loads Properly   
-                    if(!medium_image.loadFromFile("Images/MenuMedium.png")){
+                    if(!medium_image.loadFromFile("Libraries/Images/MenuMedium.png")){
                         cout <<"Medium Button Image Not Found"<< endl;
                         exit(0);
                     }       
@@ -357,7 +357,7 @@ void GameMenu::titleSequence(){
         Sprite GameMenu::expertMode(){
             // Load Background Image
                 // Ensure Image Loads Properly   
-                    if(!expert_image.loadFromFile("Images/MenuExpert.png")){
+                    if(!expert_image.loadFromFile("Libraries/Images/MenuExpert.png")){
                         cout <<"Expert Button Image Not Found"<< endl;
                         exit(0);
                     }       
@@ -384,7 +384,7 @@ void GameMenu::titleSequence(){
         Sprite GameMenu::errorSprite(){
             // Load Background Image
                 // Ensure Image Loads Properly   
-                    if(!error_image.loadFromFile("Images/ErrorPopUp.png")){
+                    if(!error_image.loadFromFile("Libraries/Images/ErrorPopUp.png")){
                         cout <<"Error Message Image Not Found"<< endl;
                         exit(0);
                     }       
@@ -411,7 +411,7 @@ void GameMenu::titleSequence(){
         Sprite GameMenu::HighScoreSprite(){
             //Load background
                 // Ensure image has loaded properly
-                    if(!highScore_image.loadFromFile("Images/HighScore.png")){
+                    if(!highScore_image.loadFromFile("Libraries/Images/HighScore.png")){
                         cout <<"High Score Image Not Found"<< endl;
                         exit(0);
                     }        
@@ -439,7 +439,7 @@ void GameMenu::titleSequence(){
         Sprite GameMenu::get_optionsSprite(){
             //Load background
                 // Ensure image has loaded properly
-                    if(!options_menu.loadFromFile("Images/OptionsMenu.png")){
+                    if(!options_menu.loadFromFile("Libraries/Images/OptionsMenu.png")){
                         cout <<"Options Screen Image Not Found"<< endl;
                         exit(0);
                      }       
@@ -466,7 +466,7 @@ void GameMenu::titleSequence(){
         Sprite GameMenu::get_controlsSprite(){
             // Load Background
                 // Ensure Image Loads Properly
-                    if(!controls_menu.loadFromFile("Images/OptionsControls.png")){
+                    if(!controls_menu.loadFromFile("Libraries/Images/OptionsControls.png")){
                     cout <<"Controls Image Not Found"<< endl;
                     exit(0);
                 }    
@@ -493,7 +493,7 @@ void GameMenu::titleSequence(){
         Sprite GameMenu::get_aboutSprite(){
             // Load Background Image
                 // Ensure Image Loads Properly   
-                    if(!about_menu.loadFromFile("Images/OptionsAbout.png")){
+                    if(!about_menu.loadFromFile("Libraries/Images/OptionsAbout.png")){
                         cout <<"About Image Not Found"<< endl;
                         exit(0);
                     }       
@@ -520,7 +520,7 @@ void GameMenu::titleSequence(){
         void GameMenu::loadQuitButton(){
             // Load Background Image
                 // Ensure Image Loads Properly   
-                    if(!quitButton_image.loadFromFile("Images/QuitButton.png")){
+                    if(!quitButton_image.loadFromFile("Libraries/Images/QuitButton.png")){
                         cout <<"Quit Button Image Not Found"<< endl;
                         exit(0);
                     }       
@@ -557,7 +557,7 @@ void GameMenu::titleSequence(){
 void GameMenu::quit(){
     //Load Popup Sprite
         // Ensure image has loaded properly
-             if(!quit_image.loadFromFile("Images/PopUp.png")){
+             if(!quit_image.loadFromFile("Libraries/Images/PopUp.png")){
                 cout <<"Popup Image Not Found"<< endl;
                 exit(0);
             }
@@ -604,7 +604,7 @@ void GameMenu::quit(){
     void GameMenu::pause(){
         //Load Popup Sprite
             // Ensure image has loaded properly
-                if(!pause_image.loadFromFile("Images/Pause.png")){
+                if(!pause_image.loadFromFile("Libraries/Images/Pause.png")){
                     cout <<"Pause Image Not Found"<< endl;
                     exit(0);
                 }
@@ -661,7 +661,7 @@ void GameMenu::quit(){
     bool GameMenu::confirm(){
         //Load Dialoge Sprite
             // Ensure image has loaded properly
-                if(!confirm_image.loadFromFile("Images/Confirm.png")){
+                if(!confirm_image.loadFromFile("Libraries/Images/Confirm.png")){
                     cout <<"Confirm PopUp Image Not Found"<< endl;
                     exit(0);
                 }
@@ -740,7 +740,7 @@ void GameMenu::quit(){
     // Enter Highscore Menu Options
     string GameMenu::gameOver(int* addScore){
         // Load Font and Make Sure it Loads Correctly
-            if(!playerFont.loadFromFile("Fonts/Future_Now.ttf")){
+            if(!playerFont.loadFromFile("Libraries/Fonts/Future_Now.ttf")){
                 cout << "Name Font Not Found" << endl;
                 exit(0);
             }
@@ -754,7 +754,7 @@ void GameMenu::quit(){
 
         //Load Popup Sprite
             // Ensure image has loaded properly
-                if(!gameOver_image.loadFromFile("Images/GameOver.png")){
+                if(!gameOver_image.loadFromFile("Libraries/Images/GameOver.png")){
                     cout <<"Game Over Image Not Found"<< endl;
                     exit(0);
                 }
@@ -814,7 +814,7 @@ void GameMenu::quit(){
             playerInput = "";
         //Load Dialoge Sprite
             // Ensure image has loaded properly
-                if(!gameOverMenu_image.loadFromFile("Images/GameOverMenu.png")){
+                if(!gameOverMenu_image.loadFromFile("Libraries/Images/GameOverMenu.png")){
                     cout <<"Game Over Menu Image Not Found"<< endl;
                     exit(0);
                 }

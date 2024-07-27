@@ -32,7 +32,7 @@ using namespace std;
 // SPECIFIC CONSTRUCTOR
     PowerUp::PowerUp(float pos_x, float pos_y) {
         // Set Image of the Body
-            setImage("Images/PowerUp_01.png");
+            setImage("Libraries/Images/PowerUp_01.png");
         // Set Position
             body->setPosition(pos_x, pos_y);
         // Scale and Set Origion of Body

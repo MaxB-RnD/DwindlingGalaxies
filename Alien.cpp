@@ -36,7 +36,7 @@ using namespace std;
 // SPECIFIC CONSTRUCTOR
     Alien::Alien(float pos_x, float pos_y) {
         // Set Image of the Body
-            setImage("Images/alienShip3.png");
+            setImage("Libraries/Images/alienShip3.png");
         // Set Position
             body->setPosition(pos_x, pos_y);
         // Scale and Set Origion of Body

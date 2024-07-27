@@ -13,7 +13,7 @@ using namespace std;
     // Specific Constructor
     MondoShawn::MondoShawn(float pos_x, float pos_y) : Alien() {
         // Set Image of the Body
-            setImage("Images/MondoShawns.png");
+            setImage("Libraries/Images/MondoShawns.png");
         // Set Position
             body->setPosition(pos_x, pos_y);
     }

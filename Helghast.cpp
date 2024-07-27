@@ -15,7 +15,7 @@ using namespace std;
     // Specific Constructor
     Helghast::Helghast(float pos_x, float pos_y) : Alien() {
         // Set Image of the Body
-            setImage("Images/Helgahst.png");
+            setImage("Libraries/Images/Helgahst.png");
         // Set Position
             body->setPosition(pos_x, pos_y);
     }

@@ -10,7 +10,7 @@ using namespace std;
 // Create Constructor for Laser
 Laser::Laser(float position_x, float position_y, float direction_x, float direction_y, float movement_speed){
   // Set Image
-    setImage("Images/Laser1.png");
+    setImage("Libraries/Images/Laser1.png");
 
   // Set Position
     body->setPosition(position_x, position_y);

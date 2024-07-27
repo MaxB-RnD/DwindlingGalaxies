@@ -34,8 +34,8 @@ DwindlingGalaxies::DwindlingGalaxies(){
         win = new RenderWindow(VideoMode(640,480), "Dwindling Galaxies", Style::Fullscreen);
 
     // Load & Scale Background Images
-        setBackground("Images/background3.png");
-        setImage("Images/Planet3.png");
+        setBackground("Libraries/Images/background3.png");
+        setImage("Libraries/Images/Planet3.png");
         //Get size of texture.
             TextureSize = wallpaper->getSize();   
         //Get size of window. 
@@ -52,7 +52,7 @@ DwindlingGalaxies::DwindlingGalaxies(){
     
     // Create Objects
         // Create New Player
-            player = new Player("Images/SpaceShip5.png", WindowSize.x/2, WindowSize.y/2);
+            player = new Player("Libraries/Images/SpaceShip5.png", WindowSize.x/2, WindowSize.y/2);
         // Create PowerUps
             initPowerUps();
         // Create Aliens
@@ -121,7 +121,7 @@ DwindlingGalaxies::DwindlingGalaxies(){
         // Title Screen Music
             titleScreen = new Music;
             // Ensure sound has loaded properly
-                if(!titleScreen->openFromFile("Sound/titleSequence.wav")){
+                if(!titleScreen->openFromFile("Libraries/Sounds/titleSequence.wav")){
                     cout <<"Title Sound File Not Found"<< endl;
                     exit(0);
                 }
@@ -129,7 +129,7 @@ DwindlingGalaxies::DwindlingGalaxies(){
     
         // Load Laser Firing Sound
             // Ensure sound has loaded properly
-                if(!blaster.loadFromFile("Sound/blaster.wav")){
+                if(!blaster.loadFromFile("Libraries/Sounds/blaster.wav")){
                     cout <<"Laser Sound File Not Found"<< endl;
                     exit(0);
                 }
@@ -138,7 +138,7 @@ DwindlingGalaxies::DwindlingGalaxies(){
 
          // Player Dies Sound
             // Ensure sound has loaded properly
-                if(!playerDies.loadFromFile("Sound/teleport.wav")){
+                if(!playerDies.loadFromFile("Libraries/Sounds/teleport.wav")){
                     cout <<"Teleport Sound File Not Found"<< endl;
                     exit(0);
                 }
@@ -146,7 +146,7 @@ DwindlingGalaxies::DwindlingGalaxies(){
 
          // Level Up Sound
             // Ensure sound has loaded properly
-                if(!levelSound.loadFromFile("Sound/levelUp.wav")){
+                if(!levelSound.loadFromFile("Libraries/Sounds/levelUp.wav")){
                     cout <<"Level Up Sound File Not Found"<< endl;
                     exit(0);
                 }
@@ -154,7 +154,7 @@ DwindlingGalaxies::DwindlingGalaxies(){
         
         // Alien Explosion Sound
             // Ensure sound has loaded properly
-                if(!alienDeath.loadFromFile("Sound/explosion.wav")){
+                if(!alienDeath.loadFromFile("Libraries/Sounds/explosion.wav")){
                     cout <<"Explosion Sound File Not Found"<< endl;
                     exit(0);
                 }
@@ -162,7 +162,7 @@ DwindlingGalaxies::DwindlingGalaxies(){
         
         // Power Up Sound
             // Ensure sound has loaded properly
-                if(!powerUpCollision.loadFromFile("Sound/powerUp.wav")){
+                if(!powerUpCollision.loadFromFile("Libraries/Sounds/powerUp.wav")){
                     cout <<"PowerUp Sound File Not Found"<< endl;
                     exit(0);
                 }
@@ -222,7 +222,7 @@ DwindlingGalaxies::DwindlingGalaxies(){
 
         // Set Score Font and Position
             // Check font loads properly        
-                if(!score_font.loadFromFile("Fonts/Future_Now.ttf")){
+                if(!score_font.loadFromFile("Libraries/Fonts/Future_Now.ttf")){
                     cout << "Score Font Not Found" << endl;
                     exit(0);
                     }
@@ -236,7 +236,7 @@ DwindlingGalaxies::DwindlingGalaxies(){
         
         // Set Level Font and Position
             // Check font loads properly        
-                if(!level_font.loadFromFile("Fonts/Future_Now.ttf")){
+                if(!level_font.loadFromFile("Libraries/Fonts/Future_Now.ttf")){
                     cout << "Level Font Not Found" << endl;
                     exit(0);
                     }
@@ -556,13 +556,13 @@ DwindlingGalaxies::DwindlingGalaxies(){
             string name[11];
 
         // Load Font and Make Sure it Loads Correctly
-            if(!highScoreText.loadFromFile("Fonts/Future_Now.ttf")){
+            if(!highScoreText.loadFromFile("Libraries/Fonts/Future_Now.ttf")){
                 cout << "High Score Font Not Found" << endl;
                 exit(0);
             }
         
         // Read In Values from File
-	        highScoreData = fopen("Scores/highScores.txt", "r");
+	        highScoreData = fopen("Libraries/Scores/highScores.txt", "r");
 	        for (int i = 0; i < 11; i++){
                 // Scan in Names 
                     fscanf(highScoreData, "%s", temp);
@@ -584,7 +584,7 @@ DwindlingGalaxies::DwindlingGalaxies(){
 	        fclose(highScoreData);
         
         // Wirte Over Values in File
-	        fopen("Scores/highScores.txt", "w");
+	        fopen("Libraries/Scores/highScores.txt", "w");
 	            for (int i = 10; i >= 0; i--){
 		            strcpy(temp, userScore[i].second.c_str());
 		            fprintf(highScoreData,"%s %d\n", temp ,userScore[i].first);
@@ -603,13 +603,13 @@ DwindlingGalaxies::DwindlingGalaxies(){
             string name[11];
 
         // Load Font and Make Sure it Loads Correctly
-            if(!highScoreText.loadFromFile("Fonts/Future_Now.ttf")){
+            if(!highScoreText.loadFromFile("Libraries/Fonts/Future_Now.ttf")){
                 cout << "High Score Font Not Found" << endl;
                 exit(0);
             }
         
         // Read In Values from File
-	        highScoreData = fopen("Scores/highScores.txt", "r");
+	        highScoreData = fopen("Libraries/Scores/highScores.txt", "r");
 	        for (int i = 0; i < 11; i++){
                 // Scan in Names 
                     fscanf(highScoreData, "%s", temp);

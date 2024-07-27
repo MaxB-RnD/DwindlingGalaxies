@@ -6,7 +6,7 @@ using namespace std;
 // SPECIFIC CONSTRUCTOR
 ExtraLive::ExtraLive(float pos_x, float pos_y) : PowerUp() {
   // Set Image of the Body
-  setImage("Images/PowerUp_02.png");
+  setImage("Libraries/Images/PowerUp_02.png");
   // Set Position
   body->setPosition(pos_x, pos_y);
   // Scale and Set Origion of Body

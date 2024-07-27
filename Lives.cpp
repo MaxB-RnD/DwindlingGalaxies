@@ -11,7 +11,7 @@ using namespace std;
 // Create Constructor for Laser
 Lives::Lives(float position_x, float position_y, float spacing){
   // Set Image
-    setImage("Images/SpaceShip5.png");
+    setImage("Libraries/Images/SpaceShip5.png");
 
   // Scale Image
     body->setScale(0.75,0.75);
