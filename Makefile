@@ -44,6 +44,6 @@ test: unitTest.cpp DwindlingGalaxies.cpp GameEntity.cpp Player.cpp Laser.cpp Gam
 	@./test
 
 play: main.cpp DwindlingGalaxies.cpp GameEntity.cpp Player.cpp Laser.cpp GameMenu.cpp Lives.cpp Alien.cpp PowerUp.cpp FasterFiring.cpp ExtraLive.cpp Talz.cpp Helghast.cpp MondoShawn.cpp
-	@g++ main.cpp DwindlingGalaxies.cpp GameEntity.cpp Player.cpp Laser.cpp GameMenu.cpp Lives.cpp Alien.cpp PowerUp.cpp FasterFiring.cpp ExtraLive.cpp Talz.cpp Helghast.cpp MondoShawn.cpp -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system -o game
-	@./game
+	@g++ main.cpp DwindlingGalaxies.cpp GameEntity.cpp Player.cpp Laser.cpp GameMenu.cpp Lives.cpp Alien.cpp PowerUp.cpp FasterFiring.cpp ExtraLive.cpp Talz.cpp Helghast.cpp MondoShawn.cpp -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system -o game.exe
+	@./game.exe
 	@clear
