@@ -14,7 +14,7 @@ Section "MainSection"
   SetOutPath "$INSTDIR"
 
   # Install the Game Executable
-  File "Include\game.exe"
+  File "Include\game"
 
   # Install SFML DLLs
   SetOutPath "$INSTDIR\Libraries\SFML"
@@ -78,8 +78,14 @@ Section "MainSection"
   File "Include\README\README.md"
   File "Include\LICENSE\LICENSE.md"
   
-  # Create a shortcut on the Desktop
-  CreateShortCut "$DESKTOP\DwindlingGalaxies.lnk" "$INSTDIR\game.exe"
+  # Create a batch file to run the game
+  FileOpen $0 "$INSTDIR\run_game.bat" w
+  FileWrite $0 "cd /d \"$INSTDIR\"\r\n"
+  FileWrite $0 "start cmd /k game\r\n"
+  FileClose $0
+  
+  # Create a shortcut on the Desktop to run the batch file
+  CreateShortCut "$DESKTOP\DwindlingGalaxies.lnk" "$INSTDIR\run_game.bat"
   
   # Write the uninstaller
   WriteUninstaller "$INSTDIR\Uninstaller.exe"
@@ -89,17 +95,22 @@ SectionEnd
 # Uninstaller section
 Section "Uninstall"
   # Remove installed files
-  Delete "$INSTDIR\game.exe"
+  Delete "$INSTDIR\game"
   
+  # Remove the batch file
+  Delete "$INSTDIR\run_game.bat"
+
   # Remove SFML DLLs
-  Delete "$INSTDIR\Libraries\SFML\bin\sfml-graphics-2.dll"
-  Delete "$INSTDIR\Libraries\SFML\bin\sfml-window-2.dll"
-  Delete "$INSTDIR\Libraries\SFML\bin\sfml-system-2.dll"
-  Delete "$INSTDIR\Libraries\SFML\bin\sfml-audio-2.dll"
+  Delete "$INSTDIR\Libraries\SFML\sfml-graphics-2.dll"
+  Delete "$INSTDIR\Libraries\SFML\sfml-window-2.dll"
+  Delete "$INSTDIR\Libraries\SFML\sfml-system-2.dll"
+  Delete "$INSTDIR\Libraries\SFML\sfml-audio-2.dll"
+  RMDir "$INSTDIR\Libraries\SFML"
   
   # Remove C++ Redistributables (they are executables, so they might not be uninstalled here)
   Delete "$INSTDIR\Libraries\Redist\VC_redist.x86.exe"
   Delete "$INSTDIR\Libraries\Redist\VC_redist.x64.exe"
+  RMDir "$INSTDIR\Libraries\Redist"
 
   # Remove Fonts Directory
   Delete "$INSTDIR\Libraries\Fonts\Future_Now.ttf"
