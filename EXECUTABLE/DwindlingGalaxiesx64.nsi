@@ -1,5 +1,5 @@
 # Define the Name of the Installer
-OutFile "DwindlingGalaxiesInstaller.exe"
+OutFile "DwindlingGalaxiesInstaller(64-bit).exe"
 
 # Define the Default Installation Directory
 InstallDir "$PROGRAMFILES\DwindlingGalaxies"
