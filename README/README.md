@@ -6,7 +6,6 @@
  designing various power-ups for added excitement and strategic depth. The technical implementation utilised an object-oriented structure in C++ for 
  modularity and maintainability employed SFML for graphics rendering and user input handling, and incorporated collision detection and response systems 
  to manage interactions between players and enemy objects, ensuring smooth gameplay.<br/><br/>
- ![Gameplay](/"Game Play (1)".png)
 
 ### **Overview**
 - This project is a 2-D space shooter game inspired by classic arcade shooters. It features engaging gameplay mechanics, local leaderboards, cut scenes, varying difficulty levels, and an array of power-ups to enhance the    player experience. The game was developed using C++ and SFML.<br/>
