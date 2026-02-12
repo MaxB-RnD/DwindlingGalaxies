@@ -78,7 +78,7 @@ add_custom_command(
     TARGET ${PROJECT_NAME}
     POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
-            ${CMAKE_CURRENT_SOURCE_DIR}/libs/SFML/bin/
+            ${CMAKE_CURRENT_SOURCE_DIR}/libs/SFML/msvc-x64/bin/
             ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
 )
 # -----------------------------------------------------------------------------
@@ -89,7 +89,7 @@ add_custom_command(
 # -----------------------------------------------------------------------------
 # Set Include Path to SFML Library
 set(SFML_DIR
-    "${CMAKE_SOURCE_DIR}/libs/SFML/lib/cmake/SFML"
+    "${CMAKE_SOURCE_DIR}/libs/SFML/msvc-x64/lib/cmake/SFML"
 )
 
 # Add Library Packages

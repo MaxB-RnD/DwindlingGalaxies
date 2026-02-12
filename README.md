@@ -24,7 +24,7 @@ This project is a 2-D space shooter game inspired by classic arcade shooters. It
 - **Difficulty Settings:** Players can choose from multiple difficulty levels, catering to both casual and hardcore gamers.
 - **Power-Ups:** Various power-ups are available throughout the game, offering temporary boosts and special abilities to the player.
 
-### **Technical Implementation**
+## **Technical Implementation**
 
  - **Object-Oriented Design:** The game is structured using object-oriented programming principles, ensuring modularity and ease of maintenance.
  - **Graphics Rendering:** SFML (Simple and Fast Multimedia Library) is used for graphics rendering, providing smooth and visually appealing animations.
@@ -33,7 +33,7 @@ This project is a 2-D space shooter game inspired by classic arcade shooters. It
  - **Sound Effects and Music:** The game features sound effects and background music to enhance the immersive experience.
  - **Building Game Package:** Successfully packaged the final game into an application that can be installed on Windows Operating Systems.
 
-### **Team**
+## **Team**
 
 - **Max Busato:** Lead Developer, responsible for core gameplay mechanics and overall project coordination.
 - **Liam Hennig:** Assisted in implementing graphics and user input handling.
