@@ -8,7 +8,7 @@ high scores, creating engaging cut scenes for enhanced storytelling, introducing
 designing various power-ups for added excitement and strategic depth. The technical implementation utilised an object-oriented structure in C++ for  modularity and maintainability employed SFML for graphics rendering and user input handling, and incorporated collision detection and response systems 
 to manage interactions between players and enemy objects, ensuring smooth gameplay.
 
-![Screenshot](docs\gameplay\Game_Play_(5).png)
+![Screenshot](docs/Game_Play_(5).png)
 
 ---
 
