@@ -16,7 +16,9 @@
 # ------------------------------------------------------------------------------
 # -                          L I C E N S I N G                                 -
 # ------------------------------------------------------------------------------
-# No licensing restrictions are applicable to the software below.
+# Copyright (c) 2024 EastSide Lion Studios. All rights reserved. Use of this 
+# software is subject to the license terms found in the LICENSE file located in 
+# the root directory of this repository.
 # ------------------------------------------------------------------------------
 
 # Project Name.
@@ -101,8 +103,8 @@ windows-release:
 	@echo "========================================================================"
 	@echo "  	  	Building Windows Release Configuration..."
 	@echo "========================================================================"
-	@mkdir -p $(BUILD_DIR_WIN_DEBUG)/cmake
-	cd $(BUILD_DIR_WIN_DEBUG)/cmake && \
+	@mkdir -p $(BUILD_DIR_WIN_RELEASE)/cmake
+	cd $(BUILD_DIR_WIN_RELEASE)/cmake && \
 		cmake ../../.. \
 			-DCMAKE_BUILD_TYPE=Release \
 			-DCMAKE_TOOLCHAIN_FILE=../../../cmake/mingw-toolchain.cmake \
@@ -122,8 +124,8 @@ linux-debug:
 	@echo "========================================================================"
 	@echo "  	  	Building Linux Debug Configuration..."
 	@echo "========================================================================"
-	@mkdir -p $(BUILD_DIR_WIN_DEBUG)/cmake
-	cd $(BUILD_DIR_WIN_DEBUG)/cmake && \
+	@mkdir -p $(BUILD_DIR_LIN_DEBUG)/cmake
+	cd $(BUILD_DIR_LIN_DEBUG)/cmake && \
 		cmake ../../.. \
 			-DCMAKE_BUILD_TYPE=Debug \
 			-DCMAKE_CXX_FLAGS="-g -O0" && \
@@ -136,8 +138,8 @@ linux-release:
 	@echo "========================================================================"
 	@echo "  	  	Building Linux Release Configuration..."
 	@echo "========================================================================"
-	@mkdir -p $(BUILD_DIR_WIN_DEBUG)/cmake
-	cd $(BUILD_DIR_WIN_DEBUG)/cmake && \
+	@mkdir -p $(BUILD_DIR_LIN_RELEASE)/cmake
+	cd $(BUILD_DIR_WIN_RELEASE)/cmake && \
 		cmake ../../.. \
 			-DCMAKE_BUILD_TYPE=Release \
 			-DCMAKE_CXX_FLAGS="-O3 -DNDEBUG" && \

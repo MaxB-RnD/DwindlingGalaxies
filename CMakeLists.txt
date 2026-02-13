@@ -26,7 +26,9 @@
 # ------------------------------------------------------------------------------
 # -                          L I C E N S I N G                                 -
 # ------------------------------------------------------------------------------
-# No licensing restrictions are applicable to the software below.
+# Copyright (c) 2024 EastSide Lion Studios. All rights reserved. Use of this 
+# software is subject to the license terms found in the LICENSE file located in 
+# the root directory of this repository.
 # ------------------------------------------------------------------------------
 
 # Set Minimum Required CMake Version.
