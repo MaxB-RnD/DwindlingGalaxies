@@ -1,0 +1,29 @@
+# ==============================================================================
+# C/C++ & CMake Build Artifacts
+# ==============================================================================
+
+# Ignore Any Build Directories Created by CMake or Manual Builds.
+**/build/
+**/bin/
+**/out/
+
+# Object & Library Files.
+**/*.o
+**/*.obj
+**/*.a
+**/*.lib
+**/*.so
+**/*.dylib
+**/*.dll
+
+# Executables.
+**/*.exe
+**/*.out
+**/*.app
+
+# CMake Internal Files.
+**/CMakeCache.txt
+**/CMakeFiles/
+**/cmake_install.cmake
+**/Makefile
+# ==============================================================================
