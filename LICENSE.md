@@ -1,6 +1,7 @@
 # LICENSE
 
 Copyright (c) 2024 EastSide Lion Studios.
+
 Written by Max Busato <busatomaxwell@yahoo.com.au>.
 
 ### 1. PROPRIETARY INFORMATION
