@@ -187,11 +187,12 @@ if(UNIX AND NOT APPLE)
     # Linux Requires Additional System Libraries.
     target_link_libraries(${PROJECT_NAME}
         pthread
+        GL
+        openal
         X11
         Xrandr
         Xcursor
         Xi
-        GL
         FLAC
         vorbisenc
         vorbisfile
