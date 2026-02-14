@@ -22,7 +22,9 @@
 #
 #  3. For file clean-up on WSL:
 #       find . -name "*:Zone.Identifier" -type f -delete
-#
+#  
+# 4. Give the executable permission to run. (Linux Only)
+#       chmod +x dist/linux-x64/Dwindling_Galaxies
 # ------------------------------------------------------------------------------
 # -                          L I C E N S I N G                                 -
 # ------------------------------------------------------------------------------

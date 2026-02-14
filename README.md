@@ -51,6 +51,8 @@ This project is a 2-D space shooter game inspired by classic arcade shooters. It
 3. **Choose your platform:**
    - **Windows:** Open the `windows-x64/` folder and run `Dwindling_Galaxies.exe`
    - **Linux:** Open the `linux-x86_64/` folder and run `Dwindling_Galaxies`
+     - ***Note:*** *If the game fails to launch, ensure the file has execute permissions `chmod +x Dwindling_Galaxies`.*
+     - ***Note:*** *If you encounter library compatibility issues, building from source via the included Makefile is recommended.*
 
 ![Screenshot](docs/Start_Menu.png)
 
