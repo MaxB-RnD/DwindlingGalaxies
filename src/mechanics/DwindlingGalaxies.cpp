@@ -36,6 +36,12 @@ DwindlingGalaxies::DwindlingGalaxies() {
   win = new RenderWindow(VideoMode(640, 480), "Dwindling Galaxies",
                          Style::Fullscreen);
 
+  // Set Window Icon (Works on Both Windows & Linux)
+  sf::Image icon;
+  if (icon.loadFromFile("Images/logo2.png")) {
+    win->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
+  }
+
   // Load & Scale Background Images
   setBackground("Images/background3.png");
   setImage("Images/Planet3.png");
