@@ -25,6 +25,7 @@
 #  
 # 4. Give the executable permission to run. (Linux Only)
 #       chmod +x dist/linux-x64/Dwindling_Galaxies
+#
 # ------------------------------------------------------------------------------
 # -                          L I C E N S I N G                                 -
 # ------------------------------------------------------------------------------
@@ -87,13 +88,20 @@ if(WIN32 OR MINGW)
         )
     endif()
 else()
-    # Linux Build Without Resource File.
+    # Linux Build With Resource Files.
     add_executable(${PROJECT_NAME} 
         "src/main.cpp"
     )
+
+    # Copy Desktop File to Build Directory.
+    configure_file(
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/resources/Dwindling_Galaxies.desktop.in
+        ${FINAL_OUTPUT_DIR}/Dwindling_Galaxies.desktop
+        @ONLY
+    )
 endif()
 
-# Copy the Fonts Folder to the Build Directory.
+# Copy the Fonts Folder to the Build Directory.  
 add_custom_command(
     TARGET ${PROJECT_NAME}
     POST_BUILD
