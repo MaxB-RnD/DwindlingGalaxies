@@ -38,7 +38,7 @@ DwindlingGalaxies::DwindlingGalaxies() {
 
   // Set Window Icon (Works on Both Windows & Linux)
   sf::Image icon;
-  if (icon.loadFromFile("Images/logo2.png")) {
+  if (icon.loadFromFile("Images/Logo.png")) {
     win->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
   }
 
