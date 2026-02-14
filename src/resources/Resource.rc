@@ -1,70 +1,71 @@
-// Microsoft Visual C++ generated resource script.
+// ------------------------------------------------------------------------------
+// -               V E R S I O N   I D E N T I F I C A T I O N                  -
+// ------------------------------------------------------------------------------
+// File:                    %name: Resource.rc %
+// Date Created:            %date_created: Sat Feb 14 15:11:43 2026 %
+// CM Version               %version: 2 %
+// CM Instance              %instance: 1 %
+// Author:                  %created_by: MBusato %
+// ------------------------------------------------------------------------------
+// -                          D E S C R I P T I O N                             -
+// ------------------------------------------------------------------------------
+// Windows resource script for Dwindling Galaxies. Defines the application icon
+// that appears in Windows File Explorer, desktop shortcuts, and the taskbar.
+// This resource file is only compiled on Windows builds and is ignored on Linux.
 //
-#include "resource.h"
+// ------------------------------------------------------------------------------
+// -                          L I C E N S I N G                                 -
+// ------------------------------------------------------------------------------
+// Copyright (c) 2024 EastSide Lion Studios. All rights reserved. Use of this 
+// software is subject to the license terms found in the LICENSE file located in 
+// the root directory of this repository.
+// ------------------------------------------------------------------------------
 
-#define APSTUDIO_READONLY_SYMBOLS
-/////////////////////////////////////////////////////////////////////////////
-//
-// Generated from the TEXTINCLUDE 2 resource.
-//
+// Link to the Header where IDI_ICON1 is Defined.
+#include "resource.h"               
+
+// Tells the Editor Not to Modify the Following Symbols.
+#define APSTUDIO_READONLY_SYMBOLS   
+
+// Standard Windows Definitions for Resources.
 #include <windows.h>
-#define IDC_STATIC (-1) 
 
-/////////////////////////////////////////////////////////////////////////////
-#undef APSTUDIO_READONLY_SYMBOLS
+// Default ID for UI Elements that Don't Need Interaction.
+#define IDC_STATIC (-1)
 
-/////////////////////////////////////////////////////////////////////////////
-// English (Australia) resources
+// Resume Normal Symbol Management.
+#undef APSTUDIO_READONLY_SYMBOLS    
 
+// Check if we are Targeting English (Australia) for Localising Resources.
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENA)
-LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_AUS
 
-#ifdef APSTUDIO_INVOKED
-/////////////////////////////////////////////////////////////////////////////
-//
-// TEXTINCLUDE
-//
+  // Set the Resource Language to AU English.
+  LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_AUS  
 
-1 TEXTINCLUDE 
-BEGIN
-    "resource.h\0"
-END
+  // Metadata Section Specifically for the Visual Studio GUI.
+  #ifdef APSTUDIO_INVOKED  
+    // Link Block 1: Connects this Script to your Header File.           
+    1 TEXTINCLUDE                       
+    BEGIN
+      "resource.h\0"
+    END
 
-2 TEXTINCLUDE 
-BEGIN
-    "#include ""afxres.h""\r\n"
-    "\0"
-END
+    // Link Block 2: Includes MFC Resource Headers.
+    2 TEXTINCLUDE                       
+    BEGIN
+      "#include ""afxres.h""\r\n"
+      "\0"
+    END
 
-3 TEXTINCLUDE 
-BEGIN
-    "\r\n"
-    "\0"
-END
+    // Link Block 3: Reserved for Custom User-Defined Resources.
+    3 TEXTINCLUDE                       
+    BEGIN
+      "\r\n"
+      "\0"
+    END
+  #endif    
 
-#endif    // APSTUDIO_INVOKED
+// The First Icon Defined Becomes the Default .exe icon in File Explorer.
+IDI_ICON1 ICON "../../libs/Images/Logo.ico"
 
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// Icon
-//
-
-// Icon with lowest ID value placed first to ensure application icon
-// remains consistent on all systems.
-IDI_ICON1               ICON                    "../../libs/Images/Logo.ico"
-#endif    // English (Australia) resources
-/////////////////////////////////////////////////////////////////////////////
-
-
-
-#ifndef APSTUDIO_INVOKED
-/////////////////////////////////////////////////////////////////////////////
-//
-// Generated from the TEXTINCLUDE 3 resource.
-//
-
-
-/////////////////////////////////////////////////////////////////////////////
-#endif    // not APSTUDIO_INVOKED
-
+#endif  // End of English (Australia) Block.

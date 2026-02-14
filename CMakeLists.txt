@@ -88,16 +88,9 @@ if(WIN32 OR MINGW)
         )
     endif()
 else()
-    # Linux Build With Resource Files.
+    # Linux Build Without Resource Files.
     add_executable(${PROJECT_NAME} 
         "src/main.cpp"
-    )
-
-    # Copy Desktop File to Build Directory.
-    configure_file(
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/resources/Dwindling_Galaxies.desktop.in
-        ${FINAL_OUTPUT_DIR}/Dwindling_Galaxies.desktop
-        @ONLY
     )
 endif()
 
