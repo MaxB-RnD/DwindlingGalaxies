@@ -131,8 +131,8 @@ linux-debug:
 			-DCMAKE_CXX_FLAGS="-g -O0" && \
 		cmake --build . -- -j$(JOBS)
 	find build/$(OUTPUT_DIR_LIN) -name "libsfml-*.so*" ! -name "*-d.so*" -delete
-	rm -f build/$(OUTPUT_DIR_LIN)/*.a
 	rm -rf build/$(OUTPUT_DIR_LIN)/cmake build/$(OUTPUT_DIR_LIN)/pkgconfig
+	chmod +x build/$(OUTPUT_DIR_LIN)/$(PROJECT_NAME)
 	@echo ""
 	@echo "Linux Debug Build Complete! Executable: ./build/$(OUTPUT_DIR_LIN)/$(PROJECT_NAME)"
 	@echo ""
@@ -148,8 +148,8 @@ linux-release:
 			-DCMAKE_CXX_FLAGS="-O3 -DNDEBUG" && \
 		cmake --build . -- -j$(JOBS)
 	find build/$(OUTPUT_DIR_LIN) -name "libsfml-*-d.so*" -delete
-	rm -f build/$(OUTPUT_DIR_LIN)/*.a
 	rm -rf build/$(OUTPUT_DIR_LIN)/cmake build/$(OUTPUT_DIR_LIN)/pkgconfig
+	chmod +x build/$(OUTPUT_DIR_LIN)/$(PROJECT_NAME)
 	@echo ""
 	@echo "Linux Release Build Complete! Executable: ./build/$(OUTPUT_DIR_LIN)/$(PROJECT_NAME)"
 	@echo ""
