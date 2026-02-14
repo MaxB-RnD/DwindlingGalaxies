@@ -4,7 +4,6 @@
 
 # Ignore Any Build Directories Created by CMake or Manual Builds.
 **/build/
-**/bin/
 **/out/
 
 # Object & Library Files.
@@ -12,12 +11,9 @@
 **/*.obj
 **/*.a
 **/*.lib
-**/*.so
 **/*.dylib
-**/*.dll
 
 # Executables.
-**/*.exe
 **/*.out
 **/*.app
 
@@ -25,5 +21,4 @@
 **/CMakeCache.txt
 **/CMakeFiles/
 **/cmake_install.cmake
-**/Makefile
 # ==============================================================================

@@ -43,11 +43,16 @@ This project is a 2-D space shooter game inspired by classic arcade shooters. It
 
 ## **Installation and Setup**
 
-1. **Download the latest release from the `Releases` page.**
-2. **Extract the `.zip` file.**
-3. **Navigate to the `dist/` folder.**
-4. **Choose your platform:**
-   - **Windows:** Open the `Windows-x64/` folder and run `Dwindling_Galaxies.exe`
+1. **Download** the latest release `.zip` from the [Releases](https://github.com/MaxB-RnD/DwindlingGalaxies/releases) page. *(right-click > open in new tab)*
+
+2. **Extract** the contents of the `.zip` file.
+   > ***Note:*** *Do not run the game from inside the zip. Move the extracted folder to a permanent location (like your Desktop or Documents) to ensure your save files and settings are kept safe.*
+   
+3. **Choose your platform:**
+   - **Windows:** Open the `windows-x64/` folder and run `Dwindling_Galaxies.exe`
+   - **Linux:** Open the `linux-x86_64/` folder and run `Dwindling_Galaxies`
+     - ***Note:*** *If the game fails to launch, ensure the file has execute permissions `chmod +x Dwindling_Galaxies`.*
+     - ***Note:*** *If you encounter library compatibility issues, building from source via the included Makefile is recommended.*
 
 ![Screenshot](docs/Start_Menu.png)
 
