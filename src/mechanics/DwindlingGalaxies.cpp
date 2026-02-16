@@ -39,11 +39,11 @@ using namespace std;
 DwindlingGalaxies::DwindlingGalaxies(){
     // FIXED: Use windowed mode with reasonable resolution for better compatibility
     // Option 1: Standard windowed mode
-    // win = new RenderWindow(VideoMode(1280, 720), "Dwindling Galaxies");
+    win = new RenderWindow(VideoMode(1920, 1080), "Dwindling Galaxies");
     
     // Option 2: For fullscreen, use desktop resolution
-    VideoMode desktop = VideoMode::getDesktopMode();
-    win = new RenderWindow(desktop, "Dwindling Galaxies", Style::Fullscreen);
+    // VideoMode desktop = VideoMode::getDesktopMode();
+    // win = new RenderWindow(desktop, "Dwindling Galaxies", Style::Fullscreen);
 
     // Set window icon (works on both Windows and Linux)
     sf::Image icon;
