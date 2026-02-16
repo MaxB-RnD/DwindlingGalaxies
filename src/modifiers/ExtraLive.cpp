@@ -17,8 +17,7 @@ void ExtraLive::update() { body->move(speed * 0.09, speed * 0.09); }
 
 // effect on player
 int ExtraLive::powerUpEffect() {
-  AddLive = AddLive + 1;
-  return AddLive;
+  return 1;
 }
 // DECONSTRUCTOR
 ExtraLive::~ExtraLive() {}

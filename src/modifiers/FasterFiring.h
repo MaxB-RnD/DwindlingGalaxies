@@ -6,9 +6,6 @@ using namespace sf;
 using namespace std;
 #include "PowerUp.h"
 class FasterFiring : public PowerUp {
- private:
-    // Initilising the function
-  int FiringFaster;
  public:
     // Initilising Position and PowerUp
   FasterFiring(float pos_x, float pos_y);

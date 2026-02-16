@@ -44,5 +44,4 @@ void Lives::update(Player* player, Vector2u WindowSize){
 
 // Deconstructor
 Lives::~Lives(){ 
-  delete body; 
 }

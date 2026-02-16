@@ -97,5 +97,4 @@ using namespace std;
 // GAME DYNAMICS & DATA HANDLING
     // Deconstuctor
     Player::~Player(){
-        delete body;
     }

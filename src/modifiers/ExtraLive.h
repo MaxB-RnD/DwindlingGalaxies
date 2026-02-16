@@ -7,8 +7,6 @@ using namespace std;
 #include "PowerUp.h"
 // Creating class that inherits from PowerUp
 class ExtraLive : public PowerUp {
- private:
-  int AddLive;
  public:
  
  //Position of item

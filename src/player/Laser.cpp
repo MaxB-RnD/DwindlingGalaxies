@@ -46,5 +46,4 @@ void Laser::update(){
 
 // Deconstructor
 Laser::~Laser(){ 
-  delete body; 
 }

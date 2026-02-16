@@ -735,10 +735,15 @@ void GameMenu::quit(){
 }
 
 
-
-// GAME OVER
-    // Enter Highscore Menu Options
+// EASY-TO-ADJUST VERSION - gameOver() with Position Variables
+// Just change TEXT_OFFSET_X and TEXT_OFFSET_Y to move the text!
     string GameMenu::gameOver(int* addScore){
+        // ===== EASY ADJUSTMENT SECTION =====
+        // Change these two numbers to move the text position:
+        const float TEXT_OFFSET_X = -15;  // Negative = left, Positive = right
+        const float TEXT_OFFSET_Y = -10;   // Negative = up, Positive = down
+        // ===================================
+        
         // Load Font and Make Sure it Loads Correctly
             if(!playerFont.loadFromFile("Fonts/Future_Now.ttf")){
                 cout << "Name Font Not Found" << endl;
@@ -747,10 +752,12 @@ void GameMenu::quit(){
         
         // Set Text Positioning
             playerText.setFont(playerFont);
-            playerText.setPosition(WindowSize.x/2,WindowSize.y/2);
             playerText.setCharacterSize(72);
             playerText.setString(playerInput);
-
+            
+            // Center the text origin so it stays centered as you type
+            FloatRect textBounds = playerText.getLocalBounds();
+            playerText.setOrigin(textBounds.width / 2.0f, textBounds.height / 2.0f);
 
         //Load Popup Sprite
             // Ensure image has loaded properly
@@ -766,47 +773,72 @@ void GameMenu::quit(){
                     FloatRect bodySize = gameOverDialoge.getGlobalBounds();
                     gameOverDialoge.setOrigin(bodySize.width/2,bodySize.height/2);
                 
-                // Set Position
-                    // Track While Screen Scrolling
+                // Set Position - Track While Screen Scrolling
                     if(player->get_x() > WindowSize.x*1.5){
                         gameOverDialoge.setPosition(1.5*WindowSize.x-250, WindowSize.y/2-150);
-                        playerText.setPosition(1.5*WindowSize.x-120,WindowSize.y/2-30);
+                        playerText.setPosition(1.5*WindowSize.x + TEXT_OFFSET_X, WindowSize.y/2 + TEXT_OFFSET_Y);
                     }
                     else if(player->get_x() < WindowSize.x*-0.5){
                         gameOverDialoge.setPosition(-0.5*WindowSize.x-250, WindowSize.y/2-150);
-                        playerText.setPosition(-0.5*WindowSize.x-120,WindowSize.y/2-30);
+                        playerText.setPosition(-0.5*WindowSize.x + TEXT_OFFSET_X, WindowSize.y/2 + TEXT_OFFSET_Y);
                     }
                     else{
                         gameOverDialoge.setPosition(player->get_x()-250, WindowSize.y/2-150);
-                        playerText.setPosition(player->get_x()-120,WindowSize.y/2-30);
+                        playerText.setPosition(player->get_x() + TEXT_OFFSET_X, WindowSize.y/2 + TEXT_OFFSET_Y);
                     }
 
         // Define Behaviour after Input
             // Define Keyboard Controls
             while(win->pollEvent(event)){
                 if (event.type == Event::TextEntered){
-                // Safe Guarding Input from Special Characters 
-                    if(event.text.unicode > 64 && event.text.unicode < 91 || event.text.unicode > 96 && event.text.unicode < 123){
-                        playerInput +=event.text.unicode;
-                        playerText.setString(playerInput);
+                    
+                    // BACKSPACE HANDLING
+                    if(event.text.unicode == 8){  // Backspace
+                        if(playerInput.getSize() > 0){
+                            playerInput.erase(playerInput.getSize() - 1, 1);
+                            playerText.setString(playerInput);
+                            
+                            // Re-center after deleting character
+                            FloatRect textBounds = playerText.getLocalBounds();
+                            playerText.setOrigin(textBounds.width / 2.0f, textBounds.height / 2.0f);
+                        }
+                    }
+                    
+                    // LETTER INPUT
+                    // Accept uppercase letters (A-Z: 65-90) and lowercase letters (a-z: 97-122)
+                    else if((event.text.unicode >= 65 && event.text.unicode <= 90) || 
+                            (event.text.unicode >= 97 && event.text.unicode <= 122)){
+                        // Limit to 12 characters
+                        if(playerInput.getSize() < 12){
+                            playerInput += static_cast<char>(event.text.unicode);
+                            playerText.setString(playerInput);
+                            
+                            // Re-center after adding character
+                            FloatRect textBounds = playerText.getLocalBounds();
+                            playerText.setOrigin(textBounds.width / 2.0f, textBounds.height / 2.0f);
+                        }
                     }
                 }
-                if(Keyboard::isKeyPressed(Keyboard::Enter)){
-                    // Open New Menu to Direct Start of New Game
+                
+                // ENTER KEY TO SUBMIT
+                if(event.type == Event::KeyPressed && event.key.code == Keyboard::Enter){
+                    // Only accept if name is not empty
+                    if(playerInput.getSize() > 0){
+                        // Open New Menu to Direct Start of New Game
                         isGameMenu = true;
                         isGameOver = false;
                         *addScore = 1;
-                        return playerInput;
+                        return playerInput.toAnsiString();
+                    }
                 }
             }
             
-        // Draw The Pause Menu in Frame
+        // Draw The Game Over Menu in Frame
             win->draw(gameOverDialoge);
             win->draw(playerText);
 
-        return playerInput;
+        return playerInput.toAnsiString();
     }
-
 
     // New Game Dialoge Box Function
     bool GameMenu::gameOverMenu(){

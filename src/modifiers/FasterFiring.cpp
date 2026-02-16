@@ -17,8 +17,7 @@ void FasterFiring::update() { body->move(0, speed * 0.09); }
 
 // effect on player
 int FasterFiring::powerUpEffect() {
-  FiringFaster = FiringFaster + 25;
-  return FiringFaster;
+  return 35;
 }
 
 // DECONSTRUCTOR
