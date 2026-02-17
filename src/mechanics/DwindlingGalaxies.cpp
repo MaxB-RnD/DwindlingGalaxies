@@ -37,14 +37,19 @@ using namespace std;
 
 // Default Constructor for Window & Variables
 DwindlingGalaxies::DwindlingGalaxies(){
-    // FIXED: Use windowed mode with reasonable resolution for better compatibility
-    // Option 1: Standard windowed mode
-    win = new RenderWindow(VideoMode(1920, 1080), "Dwindling Galaxies");
+    // Platform-specific window creation
+    #ifdef _WIN32
+        // WINDOWS: Fixed windowed mode (more reliable)
+        win = new RenderWindow(VideoMode(1920, 1080), "Dwindling Galaxies");
+    #elif __linux__
+        // LINUX: Fullscreen (works perfectly)
+        VideoMode desktop = VideoMode::getDesktopMode();
+        win = new RenderWindow(desktop, "Dwindling Galaxies", Style::Fullscreen);
+    #else
+        // FALLBACK: Default for other platforms
+        win = new RenderWindow(VideoMode(1280, 720), "Dwindling Galaxies");
+    #endif
     
-    // Option 2: For fullscreen, use desktop resolution
-    // VideoMode desktop = VideoMode::getDesktopMode();
-    // win = new RenderWindow(desktop, "Dwindling Galaxies", Style::Fullscreen);
-
     // Set window icon (works on both Windows and Linux)
     sf::Image icon;
     if (icon.loadFromFile("Images/Logo.png")) {
