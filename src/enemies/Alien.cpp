@@ -1,66 +1,84 @@
-// This files defines all of the functions and varbales declared in Alien.h
+// ------------------------------------------------------------------------------
+// -               V E R S I O N   I D E N T I F I C A T I O N -
+// ------------------------------------------------------------------------------
+// File:                    %name: Alien.cpp %
+// Date Created:            %date_created: Tue Feb 17 18:12:15 2026 %
+// CM Version               %version: 2 %
+// CM Instance              %instance: 1 %
+// Author:                  %created_by: MBusato %
+// ------------------------------------------------------------------------------
+// -                          D E S C R I P T I O N -
+// ------------------------------------------------------------------------------
+// Implementation file for the Alien class in Dwindling Galaxies. It defines 
+// functions for alien initialisation, shape handling, and movement dynamics.
+//
+// ------------------------------------------------------------------------------
+// -                          L I C E N S I N G -
+// ------------------------------------------------------------------------------
+// Copyright (c) 2024 EastSide Lion Studios. All rights reserved. Use of this
+// software is subject to the license terms found in the LICENSE file located in
+// the root directory of this repository.
+// ------------------------------------------------------------------------------
+
 #include <SFML/Graphics.hpp>
+
 #include "Alien.h"
 
 using namespace sf;
 using namespace std;
 
-//  DEFINE THE CREATION OF THE OBJECT
-   // Initalise Varibale Values
-    void Alien::initVariables(){
-        points = 50;
-        speed = 2.5f;
-    }
+Alien::Alien()
+{
+  initShape();
+  initVariables();
+}  
 
-    // Initalise Shape Dimension and Bounds
-    void Alien::initShape(){
-        // Set Scale of the Body 
-            body->setScale(0.20f,0.20f);
-
-        // Set Origion of the Body
-            FloatRect bodySize = body->getGlobalBounds();    
-            body->setOrigin(bodySize.width/2.,bodySize.height/2.);
-            
-        // Save Values as Width and Height
-            width = bodySize.width/2;
-            height = bodySize.height/2;
-    }
-
-    // Base constructor
-    Alien::Alien() {
-        initShape();
-        initVariables();
-    }   
-
-
-// SPECIFIC CONSTRUCTOR
-    Alien::Alien(float pos_x, float pos_y) {
-        // Set Image of the Body
-            setImage("Images/alienShip3.png");
-        // Set Position
-            body->setPosition(pos_x, pos_y);
-        // Scale and Set Origion of Body
-            initShape();
-        // Intalise Variabel Values
-            initVariables();
+Alien::Alien(float pos_x, float pos_y) 
+{
+  // Set Image of the Body.
+  setImage("Images/alienShip3.png");
+  
+  // Set Position.
+  body->setPosition(pos_x, pos_y);
+  
+  // Scale and Set Origin of Body.
+  initShape();
+  
+  // Initialise Variable Values.
+  initVariables();
 }
 
+Alien::~Alien()
+{
+}
 
-// GAME DYNAMICS & DATA HANDELING
-    // Movement Function
-    const FloatRect Alien::getBounds() const{
-        return body->getGlobalBounds();
-    }
+void Alien::initVariables()
+{
+  // Initialise Variable Values.
+  points = 50;
+  speed = 2.5f;
+}
 
+void Alien::initShape()
+{
+  // Set Scale of the Body.
+  body->setScale(0.20f, 0.20f);
 
-//GETTERS & SETTERS
-    // Get the number of points the alien is worth
-    const int& Alien::getPoints() const{
-        return points;
-    }
+  // Set Origin of the Body.
+  FloatRect bodySize = body->getGlobalBounds();    
+  body->setOrigin(bodySize.width / 2.f, bodySize.height / 2.f);
 
+  // Save Values as Width and Height.
+  width = bodySize.width / 2.f;
+  height = bodySize.height / 2.f;
+}
 
-// DECONSTRUCTOR
-Alien::~Alien(){
+const FloatRect Alien::getBounds() const
+{
+  return body->getGlobalBounds();
+}
 
+const int& Alien::getPoints() const
+{
+  return points;
 }

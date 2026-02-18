@@ -94,7 +94,13 @@ windows-debug:
 			-DCMAKE_TOOLCHAIN_FILE=../../../cmake/mingw-toolchain.cmake \
 			-DCMAKE_CXX_FLAGS="-g -O0" && \
 		cmake --build . -- -j$(JOBS)
-	@find build/$(OUTPUT_DIR_WIN) -name "*.dll" ! -name "*-d-*" -delete
+	@find build/$(OUTPUT_DIR_WIN) -name "*.dll" \
+    ! -name "*-d-*" \
+    ! -name "libgcc_s_seh-1.dll" \
+    ! -name "libstdc++-6.dll" \
+    ! -name "libwinpthread-1.dll" \
+		! -name "openal32.dll" \
+    -delete
 	@echo ""
 	@echo "Windows Debug Build Complete! Executable: ./build/$(OUTPUT_DIR_WIN)/$(PROJECT_NAME).exe"
 	@echo ""
