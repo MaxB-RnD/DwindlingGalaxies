@@ -121,9 +121,38 @@ DwindlingGalaxies::DwindlingGalaxies()
 // ------------------------------------------------------------------------------
 DwindlingGalaxies::~DwindlingGalaxies()
 {
-  delete addScore;
-  delete titleScreen;
+  // Stop ALL Audio First.
+  if(logoIntro)
+  {
+    logoIntro->stop();
+    delete logoIntro;
+    logoIntro = nullptr;
+  }
+  if(titleScreen) 
+  {
+    titleScreen->stop();
+    delete titleScreen;
+    titleScreen = nullptr;
+  }
+  
+  // Stop All Sound Effects
+  laser_sound.stop();
+  teleport.stop();
+  levelUp.stop();
+  explosion.stop();
+  powerUpSound.stop();
+  clickSound.stop();
+  
+  // Reset Buffers (Releases OpenAL Resources).
+  laser_sound.resetBuffer();
+  teleport.resetBuffer();
+  levelUp.resetBuffer();
+  explosion.resetBuffer();
+  powerUpSound.resetBuffer();
+  clickSound.resetBuffer();
 
+  // Release Variables from Memory.
+  delete addScore;
   delete background;
   delete background1;
   delete background2;
@@ -200,6 +229,17 @@ void DwindlingGalaxies::scaleImage()
 // ------------------------------------------------------------------------------
 void DwindlingGalaxies::music()
 {
+  // Producer Logo Screen Music.
+  logoIntro = new Music;
+  if(!logoIntro->openFromFile("Sounds/logoSequence.wav"))
+  {
+    cout << "Logo Intro Sound File Not Found" << endl;
+    exit(0);
+  }
+  logoIntroFinished = false;
+  logoIntro->setLoop(false);
+  logoIntro->play();
+
   // Title Screen Music.
   titleScreen = new Music;
   if(!titleScreen->openFromFile("Sounds/titleSequence.wav"))
@@ -207,7 +247,7 @@ void DwindlingGalaxies::music()
     cout << "Title Sound File Not Found" << endl;
     exit(0);
   }
-  titleScreen->play();
+  titleScreen->setLoop(true); 
 
   // Laser Firing Sound.
   if(!blaster.loadFromFile("Sounds/blaster.wav"))
@@ -216,6 +256,7 @@ void DwindlingGalaxies::music()
     exit(0);
   }
   laser_sound.setBuffer(blaster);
+  laser_sound.setVolume(30);
 
   // Player Death / Teleport Sound.
   if(!playerDies.loadFromFile("Sounds/teleport.wav"))
@@ -224,6 +265,7 @@ void DwindlingGalaxies::music()
     exit(0);
   }
   teleport.setBuffer(playerDies);
+  teleport.setVolume(50);
 
   // Level-Up Sound.
   if(!levelSound.loadFromFile("Sounds/levelUp.wav"))
@@ -248,6 +290,52 @@ void DwindlingGalaxies::music()
     exit(0);
   }
   powerUpSound.setBuffer(powerUpCollision);
+  powerUpSound.setVolume(85);
+
+  // Button Click Sound.
+  if(!clickBuffer.loadFromFile("Sounds/click.wav"))
+  {
+    cout << "Click Sound File Not Found" << endl;
+    exit(0);
+  }
+  clickSound.setBuffer(clickBuffer);
+}
+
+void DwindlingGalaxies::updateMusic(){ 
+  // Use Same Menu Check as Keyboard Controls.
+  bool inMenu = menu.get_title()     || menu.get_menu()    || menu.get_error()    ||
+                menu.get_highScore() || menu.get_options() || menu.get_controls() || 
+                menu.get_about()     || menu.get_quit()    || menu.get_pause()    || 
+                menu.get_confirm()   || menu.get_gameOverMenu() || menu.get_easy()|| 
+                menu.get_medium()    || menu.get_expert() || (menu.get_gameOver() && num_lives == 0);
+  
+  // Check if Producer Stuido Logo is Done Playing.
+  if(!logoIntroFinished && logoIntro->getStatus() == Music::Stopped)  
+  {
+    logoIntroFinished = true;
+    titleScreen->play();
+  }
+
+  // Run Normal Title Screen Music.
+  if(logoIntroFinished)
+  {
+    if(!inMenu) 
+    { 
+      // Pause Music During Gameplay. 
+      if(titleScreen->getStatus() == Music::Playing)
+      {
+        titleScreen->pause(); 
+      }
+    } 
+    else 
+    { 
+      // Play Music in Menus. 
+      if(titleScreen->getStatus() != Music::Playing)
+      {
+        titleScreen->play();
+      } 
+    } 
+  }
 }
 // ------------------------------------------------------------------------------
 
@@ -452,7 +540,6 @@ void DwindlingGalaxies::runMenu()
   else
   {
     // Active Gameplay
-    titleScreen->pause();
     screenView();
     updateLasers();
     updateLevel();
@@ -899,11 +986,12 @@ void DwindlingGalaxies::updateCombat()
 void DwindlingGalaxies::keyboardControls(Event event)
 {
   // Aggregate All Menu States to Determine if Gameplay Inputs Should be Ignored.
-  bool inMenu = menu.get_title()    || menu.get_menu()     || menu.get_error()   ||
-                menu.get_highScore()|| menu.get_options()  || menu.get_controls()||
-                menu.get_about()    || menu.get_quit()     || menu.get_pause()   ||
-                menu.get_confirm()  || menu.get_gameOverMenu();
-  
+  bool inMenu = menu.get_title()    || menu.get_menu()      || menu.get_error()   ||
+                menu.get_highScore()|| menu.get_options()   || menu.get_controls()||
+                menu.get_about()    || menu.get_quit()      || menu.get_pause()   ||
+                menu.get_confirm()  || menu.get_gameOverMenu() || menu.get_easy() ||
+                menu.get_medium()   || menu.get_expert(); 
+    
   // Run Menu Check.
   if(!inMenu)
   {
@@ -1029,6 +1117,9 @@ void DwindlingGalaxies::run()
   // Start the Background Music Tracks.
   music();
 
+  // Set Button Click Sound.
+  menu.setClickSound(&clickSound);
+
   // Main Window Loop.
   while(win->isOpen())
   {
@@ -1040,7 +1131,6 @@ void DwindlingGalaxies::run()
       if(event.type == Event::Closed)
       { 
         win->close(); 
-        exit(0); 
       }
       
       // Delegate Input Handling to the Controls Module.
@@ -1048,6 +1138,7 @@ void DwindlingGalaxies::run()
     }
 
     // Logic & State Updates.
+    updateMusic();
     updateDifficulty();
     restartGame();
 

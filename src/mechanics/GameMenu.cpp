@@ -166,8 +166,11 @@ int GameMenu::mainMenuButtons()
   if((mouse.x >= ((WindowSize.x / 2) + 825)) && (mouse.y >= ((WindowSize.y / 2) - 500)) &&
      (mouse.x <= ((WindowSize.x / 2) + 930)) && (mouse.y <= ((WindowSize.y / 2) - 435)))
   {
+    if(clickSound)
+    {
+      clickSound->play();
+    }
     win->close();
-    exit(0);
     return difficulty;
   }
 
@@ -175,6 +178,10 @@ int GameMenu::mainMenuButtons()
   if((mouse.x >= (WindowSize.x / 2) - 450) && (mouse.y >= ((WindowSize.y / 2) - 320)) &&
      (mouse.x <= ((WindowSize.x / 2) - 155)) && (mouse.y <= (WindowSize.y / 2) - 250))
   {
+    if(clickSound)
+    {
+      clickSound->play();
+    }
     difficulty  = 0;
     isMenu      = true;
     isEasy      = false;
@@ -192,6 +199,10 @@ int GameMenu::mainMenuButtons()
   if((mouse.x >= ((WindowSize.x / 2) - 150)) && (mouse.y >= ((WindowSize.y / 2) - 320)) &&
      (mouse.x <= ((WindowSize.x / 2) + 145)) && (mouse.y <= (WindowSize.y / 2) - 250))
   {
+    if(clickSound)
+    {
+      clickSound->play();
+    }
     difficulty  = 0;
     isHighScore = true;
     isMenu      = false;
@@ -207,6 +218,10 @@ int GameMenu::mainMenuButtons()
   if((mouse.x >= ((WindowSize.x / 2) + 150)) && (mouse.y >= ((WindowSize.y / 2) - 320)) &&
      (mouse.x <= ((WindowSize.x / 2) + 445)) && (mouse.y <= (WindowSize.y / 2) - 250))
   {
+    if(clickSound)
+    {
+      clickSound->play();
+    }
     difficulty  = 0;
     isOptions   = true;
     isHighScore = false;
@@ -225,6 +240,10 @@ int GameMenu::mainMenuButtons()
     if((mouse.x >= ((WindowSize.x / 2) - 140)) && (mouse.y >= (WindowSize.y / 2 - 125)) &&
        (mouse.x <= ((WindowSize.x / 2) + 140)) && (mouse.y <= (WindowSize.y / 2 - 55)))
     {
+      if(clickSound)
+      {
+        clickSound->play();
+      }
       difficulty = 1;
       isEasy     = true;
       isMenu     = false;
@@ -237,6 +256,10 @@ int GameMenu::mainMenuButtons()
     else if((mouse.x >= ((WindowSize.x / 2) - 140)) && (mouse.y >= (WindowSize.y / 2 - 30)) &&
             (mouse.x <= ((WindowSize.x / 2) + 140)) && (mouse.y <= (WindowSize.y / 2 + 40)))
     {
+      if(clickSound)
+      {
+        clickSound->play();
+      }
       difficulty = 2;
       isMedium   = true;
       isMenu     = false;
@@ -249,6 +272,10 @@ int GameMenu::mainMenuButtons()
     else if((mouse.x >= ((WindowSize.x / 2) - 140)) && (mouse.y >= (WindowSize.y / 2 + 55)) &&
             (mouse.x <= ((WindowSize.x / 2) + 140)) && (mouse.y <= (WindowSize.y / 2 + 125)))
     {
+      if(clickSound)
+      {
+        clickSound->play();
+      }
       difficulty = 3;
       isExpert   = true;
       isMenu     = false;
@@ -261,6 +288,10 @@ int GameMenu::mainMenuButtons()
     else if((mouse.x >= ((WindowSize.x / 2) - 195)) && (mouse.y >= (WindowSize.y / 2 + 210)) &&
             (mouse.x <= ((WindowSize.x / 2) + 185)) && (mouse.y <= (WindowSize.y / 2 + 280)))
     {
+      if(clickSound)
+      {
+        clickSound->play();
+      }
       if(difficulty == 0)
       {
         // No Difficulty Selected — Show Error.
@@ -299,6 +330,10 @@ int GameMenu::mainMenuButtons()
     if((mouse.x >= (WindowSize.x / 2) - 195) && (mouse.y >= (WindowSize.y / 2) + 90) &&
        (mouse.x <= (WindowSize.x / 2) + 195) && (mouse.y <= (WindowSize.y / 2) + 160))
     {
+      if(clickSound)
+      {
+        clickSound->play();
+      }
       difficulty = 0;
       isControls = true;
       isOptions  = false;
@@ -309,6 +344,10 @@ int GameMenu::mainMenuButtons()
     if((mouse.x >= (WindowSize.x / 2) - 195) && (mouse.y >= (WindowSize.y / 2) - 95) &&
        (mouse.x <= (WindowSize.x / 2) + 195) && (mouse.y <= (WindowSize.y / 2) - 25))
     {
+      if(clickSound)
+      {
+        clickSound->play();
+      }
       difficulty = 0;
       isAbout    = true;
       isOptions  = false;
@@ -695,13 +734,20 @@ void GameMenu::quit()
     if((mouse.x >= (WindowSize.x / 2) - 190) && mouse.y >= ((WindowSize.y / 2) + 40) &&
        (mouse.x <= (WindowSize.x / 2) - 50)  && (mouse.y <= (WindowSize.y / 2) + 110))
     {
+    if(clickSound)
+    {
+      clickSound->play();
+    }
       win->close();
-      exit(0);
     }
     // No — Close Dialog.
     else if((mouse.x <= (WindowSize.x / 2) + 190) && mouse.y >= ((WindowSize.y / 2) + 40) &&
             (mouse.x >= (WindowSize.x / 2) + 50)  && (mouse.y <= (WindowSize.y / 2) + 110))
     {
+    if(clickSound)
+    {
+      clickSound->play();
+    }
       isQuit = false;
     }
   }
@@ -752,12 +798,20 @@ void GameMenu::pause()
     if((mouse.x >= ((WindowSize.x / 2) - 140)) && (mouse.y >= (WindowSize.y / 2 - 5)) &&
        (mouse.x <= ((WindowSize.x / 2) + 110)) && (mouse.y <= (WindowSize.y / 2 + 62)))
     {
+    if(clickSound)
+    {
+      clickSound->play();
+    }
       isPause = false;
     }
     // Restart.
     else if((mouse.x >= ((WindowSize.x / 2) - 140)) && (mouse.y >= (WindowSize.y / 2 + 120)) &&
             (mouse.x <= ((WindowSize.x / 2) + 110)) && (mouse.y <= (WindowSize.y / 2 + 187)))
     {
+      if(clickSound)
+      {
+        clickSound->play();
+      }
       isConfirm = true;
       isPause   = false;
     }
@@ -765,6 +819,10 @@ void GameMenu::pause()
     else if((mouse.x >= ((WindowSize.x / 2) - 140)) && (mouse.y >= (WindowSize.y / 2 - 125)) &&
             (mouse.x <= ((WindowSize.x / 2) + 110)) && (mouse.y <= (WindowSize.y / 2 - 58)))
     {
+      if(clickSound)
+      {
+        clickSound->play();
+      }
       isConfirm = true;
       isPause   = false;
       mainMenu  = true;
@@ -817,6 +875,10 @@ bool GameMenu::confirm()
     if((mouse.x >= (WindowSize.x / 2) - 170) && mouse.y >= ((WindowSize.y / 2) + 80) &&
        (mouse.x <= (WindowSize.x / 2) - 50)  && (mouse.y <= ((WindowSize.y / 2) + 150)))
     {
+      if(clickSound)
+      {
+        clickSound->play();
+      }
       if(mainMenu == true)
       {
         // Return to Main Menu.
@@ -849,6 +911,10 @@ bool GameMenu::confirm()
     else if((mouse.x <= (WindowSize.x / 2) + 200) && mouse.y >= ((WindowSize.y / 2) + 80) &&
             (mouse.x >= (WindowSize.x / 2) + 76)  && (mouse.y <= (WindowSize.y / 2) + 150))
     {
+      if(clickSound)
+      {
+        clickSound->play();
+      }
       isConfirm = false;
       isPause   = true;
       return false;
@@ -1009,6 +1075,10 @@ bool GameMenu::gameOverMenu()
     if((mouse.x >= ((WindowSize.x / 2) - 150)) && (mouse.y >= (WindowSize.y / 2 - 175)) &&
        (mouse.x <= ((WindowSize.x / 2) + 100)) && (mouse.y <= (WindowSize.y / 2 - 105)))
     {
+      if(clickSound)
+      {
+        clickSound->play();
+      }
       difficulty = 0;
       isMenu     = true;
       isEasy     = false;
@@ -1022,6 +1092,10 @@ bool GameMenu::gameOverMenu()
     else if((mouse.x >= ((WindowSize.x / 2) - 150)) && (mouse.y >= (WindowSize.y / 2 - 40)) &&
             (mouse.x <= ((WindowSize.x / 2) + 100)) && (mouse.y <= (WindowSize.y / 2 + 30)))
     {
+      if(clickSound)
+      {
+        clickSound->play();
+      }
       isGameMenu  = false;
       isMenu      = false;
       isEasy      = false;
@@ -1038,9 +1112,12 @@ bool GameMenu::gameOverMenu()
     else if((mouse.x >= ((WindowSize.x / 2) - 150)) && (mouse.y >= (WindowSize.y / 2 + 95)) &&
             (mouse.x <= ((WindowSize.x / 2) + 100)) && (mouse.y <= (WindowSize.y / 2 + 165)))
     {
+      if(clickSound)
+      {
+        clickSound->play();
+      }
       isGameMenu = false;
       win->close();
-      exit(0);
       return false;
     }
   }
@@ -1203,5 +1280,10 @@ bool GameMenu::get_about()
 void GameMenu::set_about(bool an_about)
 {
   isAbout = an_about;
+}
+
+void GameMenu::setClickSound(sf::Sound* sound)
+{
+    clickSound = sound;
 }
 // ------------------------------------------------------------------------------
