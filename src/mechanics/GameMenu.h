@@ -715,6 +715,7 @@ class GameMenu
     bool isMedium = false;
     bool isExpert = false;
     bool isError = false;
+    bool mouseWasPressed = false;
 
     // --------------------------------------------------------------------------
     // Graphics - Textures.

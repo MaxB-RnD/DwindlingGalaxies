@@ -160,7 +160,12 @@ int GameMenu::mainMenuButtons()
 {
   // Get Current Position & Status of the Mouse. 
   Vector2i mouse = Mouse::getPosition(*win);
-  if(!Mouse::isButtonPressed(Mouse::Left)) return difficulty;
+
+  // Track Mouse State to Prevent Continuous Clicks.
+  bool mouseIsPressed = Mouse::isButtonPressed(Mouse::Left);
+  bool clickJustHappened = mouseIsPressed && !mouseWasPressed;
+  mouseWasPressed = mouseIsPressed;
+  if(!clickJustHappened) return difficulty;
 
   // Quit Button (X in Corner).
   if((mouse.x >= ((WindowSize.x / 2) + 825)) && (mouse.y >= ((WindowSize.y / 2) - 500)) &&

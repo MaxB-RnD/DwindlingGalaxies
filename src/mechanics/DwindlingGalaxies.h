@@ -309,12 +309,12 @@ class DwindlingGalaxies
     //  Handles player movement and firing input.
     //
     // PARAMETERS:
-    //  event - SFML event object.
+    //  None.
     //
     // RETURNS:
     //  None.
     //
-    void keyboardControls(Event event);
+    void keyboardControls();
 
     // --------------------------------------------------------------------------
     // FUNCTION: restartGame

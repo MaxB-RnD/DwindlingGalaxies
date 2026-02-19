@@ -983,7 +983,7 @@ void DwindlingGalaxies::updateCombat()
 // ------------------------------------------------------------------------------
 // -                     P L A Y E R   C O N T R O L S -
 // ------------------------------------------------------------------------------
-void DwindlingGalaxies::keyboardControls(Event event)
+void DwindlingGalaxies::keyboardControls()
 {
   // Aggregate All Menu States to Determine if Gameplay Inputs Should be Ignored.
   bool inMenu = menu.get_title()    || menu.get_menu()      || menu.get_error()   ||
@@ -998,41 +998,41 @@ void DwindlingGalaxies::keyboardControls(Event event)
     // Ensures Smooth 8-way Movement by Handling Dual-Key Presses Before Single-Direction Inputs.
     if (Keyboard::isKeyPressed(Keyboard::Left)  && Keyboard::isKeyPressed(Keyboard::Up))   
     { 
-      player->move_left(12, WindowSize);  
-      player->move_up(12, WindowSize); 
+      player->move_left(6, WindowSize);  
+      player->move_up(6, WindowSize); 
     }
     else if(Keyboard::isKeyPressed(Keyboard::Left)  && Keyboard::isKeyPressed(Keyboard::Down)) 
     { 
-      player->move_left(12, WindowSize);  
-      player->move_down(12, WindowSize); 
+      player->move_left(6, WindowSize);  
+      player->move_down(6, WindowSize); 
     }
     else if(Keyboard::isKeyPressed(Keyboard::Right) && Keyboard::isKeyPressed(Keyboard::Up))   
     { 
-      player->move_right(12, WindowSize);
-      player->move_up(12, WindowSize); 
+      player->move_right(6, WindowSize);
+      player->move_up(6, WindowSize); 
     }
     else if(Keyboard::isKeyPressed(Keyboard::Right) && Keyboard::isKeyPressed(Keyboard::Down)) 
     { 
-      player->move_right(12, WindowSize); 
-      player->move_down(12, WindowSize);
+      player->move_right(6, WindowSize); 
+      player->move_down(6, WindowSize);
     }
 
     // Single Directional Movement.
     else if(Keyboard::isKeyPressed(Keyboard::Right)) 
     {
-      player->move_right(12, WindowSize); 
+      player->move_right(6, WindowSize); 
     }
     else if(Keyboard::isKeyPressed(Keyboard::Left))  
     {
-      player->move_left(12, WindowSize); 
+      player->move_left(6, WindowSize); 
     }
     else if(Keyboard::isKeyPressed(Keyboard::Up))    
     { 
-      player->move_up(12, WindowSize);
+      player->move_up(6, WindowSize);
     }
     else if(Keyboard::isKeyPressed(Keyboard::Down))  
     { 
-      player->move_down(12, WindowSize); 
+      player->move_down(6, WindowSize); 
     }
 
     // Laser Firing Logic.
@@ -1132,10 +1132,10 @@ void DwindlingGalaxies::run()
       { 
         win->close(); 
       }
-      
-      // Delegate Input Handling to the Controls Module.
-      keyboardControls(event);
     }
+
+    // Delegate Input Handling to the Controls Module.
+    keyboardControls();
 
     // Logic & State Updates.
     updateMusic();
