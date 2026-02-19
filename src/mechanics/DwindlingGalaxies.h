@@ -109,6 +109,17 @@ class DwindlingGalaxies
     void music();
 
     // --------------------------------------------------------------------------
+    // FUNCTION: updateMusic
+    //
+    // DESCRIPTION:
+    //  Play/Pauses music in the game menus.
+    //
+    // RETURNS:
+    //  None.
+    //
+    void updateMusic();
+
+    // --------------------------------------------------------------------------
     // FUNCTION: screenScroll
     //
     // DESCRIPTION:
@@ -298,12 +309,12 @@ class DwindlingGalaxies
     //  Handles player movement and firing input.
     //
     // PARAMETERS:
-    //  event - SFML event object.
+    //  None.
     //
     // RETURNS:
     //  None.
     //
-    void keyboardControls(Event event);
+    void keyboardControls();
 
     // --------------------------------------------------------------------------
     // FUNCTION: restartGame
@@ -393,6 +404,8 @@ class DwindlingGalaxies
     //
     SoundBuffer blaster;
     Sound laser_sound;
+    Music* logoIntro;
+    bool logoIntroFinished;
     Music* titleScreen;
     SoundBuffer playerDies;
     Sound teleport;
@@ -402,7 +415,9 @@ class DwindlingGalaxies
     Sound explosion;
     SoundBuffer powerUpCollision;
     Sound powerUpSound;
-
+    SoundBuffer clickBuffer;
+    Sound       clickSound;
+    
     // --------------------------------------------------------------------------
     // Title Bar Elements.
     //

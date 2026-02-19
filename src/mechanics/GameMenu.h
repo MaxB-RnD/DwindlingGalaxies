@@ -664,6 +664,21 @@ class GameMenu
     //
     void set_gameOverMenu(bool a_gameOverMenu);
 
+    // --------------------------------------------------------------------------
+    // FUNCTION: setClickSound
+    //
+    // DESCRIPTION:
+    //  Sets the sound to be made when the mouse is clicked on a button in the 
+    //  game menus. 
+    //
+    // PARAMETERS:
+    //  sound - New sound for when mouse is clicked.
+    //
+    // RETURNS:
+    //  None.
+    //
+    void setClickSound(sf::Sound* sound);
+
   private:
     // --------------------------------------------------------------------------
     // Game Variables.
@@ -700,6 +715,7 @@ class GameMenu
     bool isMedium = false;
     bool isExpert = false;
     bool isError = false;
+    bool mouseWasPressed = false;
 
     // --------------------------------------------------------------------------
     // Graphics - Textures.
@@ -755,6 +771,11 @@ class GameMenu
     // Main Menu Screen Variable.
     //
     int difficulty = 0;
+
+    // --------------------------------------------------------------------------
+    // Audio Sounds.
+    //
+    Sound* clickSound = nullptr;
 };
 
 #endif

@@ -62,7 +62,7 @@ This project is a 2-D space shooter game inspired by classic arcade shooters. It
 
 ## **Future Enhancement**
 
-- **Online Leaderboards:** Integrate online leaderboards to allow players to compete globally.
+- **Optimise Memory & Performance:** Reduce the game’s computational and memory footprint, especially for Linux WSL environments, to ensure smoother gameplay on lower-spec devices.
 - **Additional Levels:** Develop more levels with unique themes and increasing difficulty.
 - **Multiplayer Mode:** Implement a multiplayer mode for cooperative and competitive play.
 
