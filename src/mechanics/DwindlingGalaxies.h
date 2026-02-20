@@ -426,6 +426,8 @@ class DwindlingGalaxies
     Font score_font;
     Text level_info;
     Font level_font;
+    Font highScore_font;
+    bool fontsLoaded = false;
     vector<Lives*> lives;
 
     // --------------------------------------------------------------------------

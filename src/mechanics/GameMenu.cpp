@@ -52,6 +52,19 @@ void GameMenu::set_player(Player* player)
 {
   this->player = player;
 }
+
+void GameMenu::loadFonts()
+{
+  if(!playerFontLoaded)
+  {
+    if(!playerFont.loadFromFile("Fonts/Future_Now.ttf"))
+    {
+      cout << "Player Font Not Found" << endl;
+      exit(0);
+    }
+    playerFontLoaded = true;
+  }
+}
 // ------------------------------------------------------------------------------
 
 
@@ -943,10 +956,9 @@ string GameMenu::gameOver(int* addScore)
   const float TEXT_OFFSET_Y = -10;
 
   // Load Font. 
-  if(!playerFont.loadFromFile("Fonts/Future_Now.ttf"))
+  if(!playerFontLoaded)
   {
-    cout << "Name Font Not Found" << endl;
-    exit(0);
+    loadFonts();
   }
 
   // Set-Up Text Entry Field.

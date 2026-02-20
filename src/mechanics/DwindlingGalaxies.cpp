@@ -112,6 +112,28 @@ DwindlingGalaxies::DwindlingGalaxies()
   // Window Performance Settings.
   win->setVerticalSyncEnabled(true);
   win->setFramerateLimit(60);
+
+  // Load ALL Fonts Once.
+  if(!score_font.loadFromFile("Fonts/Future_Now.ttf"))
+  {
+    cout << "Score Font Not Found" << endl;
+    exit(0);
+  }
+  
+  if(!level_font.loadFromFile("Fonts/Future_Now.ttf"))
+  {
+    cout << "Level Font Not Found" << endl;
+    exit(0);
+  }
+  
+  if(!highScore_font.loadFromFile("Fonts/Future_Now.ttf"))
+  {
+    cout << "High Score Font Not Found" << endl;
+    exit(0);
+  }
+  
+  // Fonts Successfully Loaded. 
+  fontsLoaded = true;
 }
 // ------------------------------------------------------------------------------
 
@@ -381,24 +403,19 @@ void DwindlingGalaxies::titleBar()
   titleBarBackground.setOutlineColor(Color(102, 0, 102));
   titleBarBackground.setOutlineThickness(5);
 
-  // Display Score Text.
-  if(!score_font.loadFromFile("Fonts/Future_Now.ttf"))
+  // Use Already Loaded Fonts Instead of Loading from Disk.
+  if(fontsLoaded)
   {
-    cout << "Score Font Not Found" << endl;
-    exit(0);
+    score_info.setFont(score_font);
+    level_info.setFont(level_font);
   }
-  score_info.setFont(score_font);
+  
+  // Display Score Text.
   score_info.setFillColor(Color::White);
   score_info.setCharacterSize(50);
   score_info.setString("SCORE: " + to_string(score) + " ");
 
   // Display Level Text.
-  if(!level_font.loadFromFile("Fonts/Future_Now.ttf"))
-  {
-    cout << "Level Font Not Found" << endl;
-    exit(0);
-  }
-  level_info.setFont(level_font);
   level_info.setFillColor(Color::White);
   level_info.setCharacterSize(50);
   level_info.setString("Level " + to_string(level) + " ");
@@ -406,9 +423,12 @@ void DwindlingGalaxies::titleBar()
   level_info.setOrigin(bodySize.width / 2., bodySize.height / 2.);
 
   // Display Lives Icons.
-  for(int i = 0; i < 5; i++)
+  if(lives.empty())
   {
-    lives.push_back(new Lives(0.95 * WindowSize.x, 30, 130 * i));
+    for(int i = 0; i < 5; i++)
+    {
+      lives.push_back(new Lives(0.95 * WindowSize.x, 30, 130 * i));
+    }
   }
 
   // Track the HUD Bar to the Camera Position.
@@ -662,20 +682,12 @@ void DwindlingGalaxies::updateDifficulty()
 // ------------------------------------------------------------------------------
 void DwindlingGalaxies::updateHighScore()
 {
-  Font highScoreText;
   vector<pair<int, string>> userScore;
   FILE* highScoreData;
   int   highScore[11];
   char  temp[255];
   string name[11];
   
-  // Ensure Assets are Present Before Processing.
-  if(!highScoreText.loadFromFile("Fonts/Future_Now.ttf"))
-  {
-    cout << "High Score Font Not Found" << endl;
-    exit(0);
-  }
-
   // Read Existing Scores from the Text File.
   highScoreData = fopen("Scores/highScores.txt", "r");
   for(int i = 0; i < 11; i++)
@@ -722,18 +734,11 @@ void DwindlingGalaxies::updateHighScore()
 
 void DwindlingGalaxies::displayHighScore()
 {
-  Font highScoreText;
   vector<pair<int, string>> userScore;
   FILE* highScoreData;
   int   highScore[11];
   char  temp[255];
   string name[11];
-
-  if(!highScoreText.loadFromFile("Fonts/Future_Now.ttf"))
-  {
-    cout << "High Score Font Not Found" << endl;
-    exit(0);
-  }
 
   // Read Scores from File.
   highScoreData = fopen("Scores/highScores.txt", "r");
@@ -753,18 +758,18 @@ void DwindlingGalaxies::displayHighScore()
     // Ensure Scores Follow the Camera's Viewport.
     if(player->get_x() > WindowSize.x * 1.5)
     {
-      showHighScore((1.5 * WindowSize.x) - 210, (WindowSize.y / 2 - 235) + (50 * i), userScore[i].second, win, &highScoreText);
-      showHighScore((1.5 * WindowSize.x) + 130, (WindowSize.y / 2 - 235) + (50 * i), to_string(userScore[i].first), win, &highScoreText);
+      showHighScore((1.5 * WindowSize.x) - 210, (WindowSize.y / 2 - 235) + (50 * i), userScore[i].second, win, &highScore_font);
+      showHighScore((1.5 * WindowSize.x) + 130, (WindowSize.y / 2 - 235) + (50 * i), to_string(userScore[i].first), win, &highScore_font);
     }
     else if(player->get_x() < WindowSize.x * -0.5)
     {
-      showHighScore((-0.5 * WindowSize.x) - 210, (WindowSize.y / 2 - 235) + (50 * i), userScore[i].second, win, &highScoreText);
-      showHighScore((-0.5 * WindowSize.x) + 130, (WindowSize.y / 2 - 235) + (50 * i), to_string(userScore[i].first), win, &highScoreText);
+      showHighScore((-0.5 * WindowSize.x) - 210, (WindowSize.y / 2 - 235) + (50 * i), userScore[i].second, win, &highScore_font);
+      showHighScore((-0.5 * WindowSize.x) + 130, (WindowSize.y / 2 - 235) + (50 * i), to_string(userScore[i].first), win, &highScore_font);
     }
     else
     {
-      showHighScore(player->get_x() - 210, (WindowSize.y / 2 - 235) + (50 * i), userScore[i].second, win, &highScoreText);
-      showHighScore(player->get_x() + 130, (WindowSize.y / 2 - 235) + (50 * i), to_string(userScore[i].first), win, &highScoreText);
+      showHighScore(player->get_x() - 210, (WindowSize.y / 2 - 235) + (50 * i), userScore[i].second, win, &highScore_font);
+      showHighScore(player->get_x() + 130, (WindowSize.y / 2 - 235) + (50 * i), to_string(userScore[i].first), win, &highScore_font);
     }
   }
 

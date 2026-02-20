@@ -86,6 +86,20 @@ class GameMenu
     void set_player(Player* player);
 
     // --------------------------------------------------------------------------
+    // FUNCTION: loadFonts
+    //
+    // DESCRIPTION:
+    //  Loads the player font into a cached variable to reduce disk reads.
+    //
+    // PARAMETERS:
+    //  None.
+    //
+    // RETURNS:
+    //  None.
+    //
+    void loadFonts();
+
+    // --------------------------------------------------------------------------
     // FUNCTION: titleSequence
     //
     // DESCRIPTION:
@@ -693,6 +707,7 @@ class GameMenu
     String playerInput;
     Text playerText;
     Font playerFont;
+    bool playerFontLoaded = false;
     Event event;
 
     // --------------------------------------------------------------------------
