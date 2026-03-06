@@ -139,6 +139,17 @@ add_custom_command(
             ${FINAL_OUTPUT_DIR}/
 )
 
+# Copy the Linux Run Script.
+if(UNIX AND NOT APPLE)
+    add_custom_command(
+        TARGET ${PROJECT_NAME}
+        POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy
+                ${CMAKE_CURRENT_SOURCE_DIR}/cmake/run.sh
+                ${FINAL_OUTPUT_DIR}/run.sh
+    )
+endif()
+
 # Copy the Dynamic Library Files to the Build Directory.
 if(WIN32 OR MINGW)
     # Copy Windows DLLs.
