@@ -26,4 +26,4 @@
 cd "$(dirname "$0")"
 
 # Custom Run Command with Library Path Set.
-LD_LIBRARY_PATH=. ./DwindlingGalaxies
+LD_LIBRARY_PATH=. ./Dwindling_Galaxies
